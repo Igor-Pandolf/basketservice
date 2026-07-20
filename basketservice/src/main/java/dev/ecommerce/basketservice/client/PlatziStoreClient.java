@@ -11,8 +11,8 @@ import java.util.List;
 public interface PlatziStoreClient {
 
     @GetMapping("/products")
-    List<PlatziStoreClient> getAllProducts();
+    List<PlatziProductResponse> getAllProducts();
 
-    @GetMapping("/products/${id}")
+    @GetMapping("/products/{id}")
     PlatziProductResponse getProductById(@PathVariable Long id);
 }

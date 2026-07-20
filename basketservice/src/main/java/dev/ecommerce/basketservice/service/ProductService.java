@@ -13,7 +13,7 @@ public class ProductService {
 
     private final PlatziStoreClient platziStoreClient;
 
-    public List<PlatziStoreClient> getAllProducts() {
+    public List<PlatziProductResponse> getAllProducts() {
         return platziStoreClient.getAllProducts();
     }
 

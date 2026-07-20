@@ -20,7 +20,7 @@ public class ProductController {
     private final ProductService productService;
 
     @GetMapping
-    public ResponseEntity<List<PlatziStoreClient>> getAllProducts() {
+    public ResponseEntity<List<PlatziProductResponse>> getAllProducts() {
         return ResponseEntity.ok(productService.getAllProducts());
     }
 
