@@ -73,10 +73,15 @@ public class BasketService {
         return basketRepository.save(savedBasket);
     }
 
-    private Basket payBasket(String basketId, PaymentRequest request) {
+    public Basket payBasket(String basketId, PaymentRequest request) {
         Basket savedBasket = getBasketById(basketId);
         savedBasket.setPaymentMethod(request.getPaymentMethod());
         savedBasket.setStatus(Status.SOLD);
         return basketRepository.save(savedBasket);
+    }
+
+    public void deleteBasket(String basketId) {
+        Basket savedBasket = getBasketById(basketId);
+        basketRepository.delete(savedBasket);
     }
 }
