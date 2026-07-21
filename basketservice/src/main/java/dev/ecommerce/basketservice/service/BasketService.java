@@ -2,6 +2,7 @@ package dev.ecommerce.basketservice.service;
 
 import dev.ecommerce.basketservice.client.response.PlatziProductResponse;
 import dev.ecommerce.basketservice.controller.request.BasketRequest;
+import dev.ecommerce.basketservice.controller.request.PaymentRequest;
 import dev.ecommerce.basketservice.entity.Basket;
 import dev.ecommerce.basketservice.entity.Product;
 import dev.ecommerce.basketservice.entity.Status;
@@ -69,6 +70,13 @@ public class BasketService {
 
         savedBasket.setProducs(products);
         savedBasket.calculateTotalPrice();
+        return basketRepository.save(savedBasket);
+    }
+
+    private Basket payBasket(String basketId, PaymentRequest request) {
+        Basket savedBasket = getBasketById(basketId);
+        savedBasket.setPaymentMethod(request.getPaymentMethod());
+        savedBasket.setStatus(Status.SOLD);
         return basketRepository.save(savedBasket);
     }
 }
